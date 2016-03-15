@@ -15,3 +15,15 @@ function gmms = gmmTrain( dir_train, max_iter, epsilon, M )
 %                                          is a vector
 %                            gmm.cov     : DxDxM matrix of covariances. 
 %                                          (:,:,i) is for i^th mixture
+
+    % Load the speech data
+    SD = dir(dir_train);
+    for i = 1:length(SD)
+        speaker = SD(i);
+        % Ignore current and previous directory
+        if strcmp(speaker.name, '.') || strcmp(speaker.name, '..')
+            continue;
+        end
+        disp(speaker.name);
+    end
+    gmms = [];
