@@ -1,4 +1,4 @@
-function gmms = gmmTrain( dir_train, max_iter, epsilon, M )
+function [gmms, mfcc] = gmmTrain( dir_train, max_iter, epsilon, M )
 % gmmTain
 %
 %  inputs:  dir_train  : a string pointing to the high-level
@@ -15,6 +15,7 @@ function gmms = gmmTrain( dir_train, max_iter, epsilon, M )
 %                                          is a vector
 %                            gmm.cov     : DxDxM matrix of covariances. 
 %                                          (:,:,i) is for i^th mixture
+    gmms = {};
 
     % Load the speech data
     SD = dir(dir_train);
@@ -24,6 +25,25 @@ function gmms = gmmTrain( dir_train, max_iter, epsilon, M )
         if strcmp(speaker.name, '.') || strcmp(speaker.name, '..')
             continue;
         end
-        disp(speaker.name);
+        %disp(i);
+        %disp(speaker);
+        speaker_i = i - 2;
+        gmms{speaker_i} = struct();
+        gmms{speaker_i}.name = speaker.name;
+
+        % Get all mfcc data for the speaker
+        MD = dir(strcat(dir_train, '/', speaker.name, '/*.mfcc'));
+        mfcc = [];
+        for j = 1:length(MD)
+            mfcc = [mfcc; load(strcat(dir_train, '/', speaker.name, '/', MD(j).name))];
+        end
+        
+        % Randomize the mfcc
+        mfcc = mfcc(randperm(size(mfcc,1)),:);
+        
+        % Initialization
+        D = size(mfcc, 2);
+        gmms{speaker_i}.weights = 1/M * ones(1, M);
+        gmms{speaker_i}.means = mfcc(1:M, :)';
+        gmms{speaker_i}.covs = repmat(eye(D),1,1,M);
     end
-    gmms = [];
