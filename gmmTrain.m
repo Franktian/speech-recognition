@@ -42,8 +42,34 @@ function [gmms, mfcc] = gmmTrain( dir_train, max_iter, epsilon, M )
         mfcc = mfcc(randperm(size(mfcc,1)),:);
         
         % Initialization
-        D = size(mfcc, 2);
-        gmms{speaker_i}.weights = 1/M * ones(1, M);
-        gmms{speaker_i}.means = mfcc(1:M, :)';
-        gmms{speaker_i}.covs = repmat(eye(D),1,1,M);
+        theta = initialize_theta(mfcc, M);
+
+        % Training
+        k = 0;
+        prev_L = -Inf;
+        improvement = Inf;
+        while k <= max_iter && improvement >= epsilon
+            [L, theta] = em_step(mfcc, theta, M);
+            improvement = L - prev_L;
+            prev_L = L;
+            k = k + 1;
+        end
+
+        % Training completed, assign the values to GMM
+        gmms{speaker_i}.weights = theta.weights;
+        gmms{speaker_i}.means = theta.means;
+        gmms{speaker_i}.covs = theta.covs;
+
     end
+
+function theta = initialize_theta(mfcc, M)
+    theta = struct();
+    
+    theta.weights = 1/M * ones(1, M);
+    theta.means = mfcc(1:M, :)';
+    theta.covs = repmat(eye(size(mfcc, 2)), 1, 1, M);
+
+function [L, theta] = em_step(X, theta, M)
+    L = 0;
+    theta.weights = 2/M * ones(1, M);
+    disp(theta.weights);
