@@ -1,4 +1,4 @@
-function [gmms, mfcc] = gmmTrain( dir_train, max_iter, epsilon, M )
+function [gmms, mfcc, b] = gmmTrain( dir_train, max_iter, epsilon, M )
 % gmmTain
 %
 %  inputs:  dir_train  : a string pointing to the high-level
@@ -49,7 +49,7 @@ function [gmms, mfcc] = gmmTrain( dir_train, max_iter, epsilon, M )
         prev_L = -Inf;
         improvement = Inf;
         while k <= max_iter && improvement >= epsilon
-            [L, theta] = em_step(mfcc, theta, M);
+            [L, theta, b] = em_step(mfcc, theta, M);
             improvement = L - prev_L;
             prev_L = L;
             k = k + 1;
@@ -69,7 +69,33 @@ function theta = initialize_theta(mfcc, M)
     theta.means = mfcc(1:M, :)';
     theta.covs = repmat(eye(size(mfcc, 2)), 1, 1, M);
 
-function [L, theta] = em_step(X, theta, M)
+function [L, theta, b] = em_step(X, theta, M)    
+    d = size(X, 2);
+    t = size(X, 1);
+
+    % Do calculations in log domain
+    numerator = zeros(t, M);
+    for i=1:d
+        numerator = numerator + (repmat(X(:,i),1,M) - repmat(theta.means(i,:),t,1)).^2 ./ squeeze(repmat(theta.covs(i,i,:),1,t,1));
+    end
+    numerator = -0.5 * numerator;
+    disp(numerator);
+
+    covs = zeros(d, M);
+    for i=1:M
+        covs(:, i) = diag(theta.covs(:,:,i));
+    end
+
+    denominator = d/2 * log(2 * pi) + 1/2 * repmat(sum(log(covs), 1), t, 1);
+
+    b = numerator - denominator;
+    %disp(b);
+
+    % Get log likelihood
+    wb = theta.weights * exp(b)';
+    disp(wb);
+    disp(sum(log(wb), 2));
+    %L = sum(log(theta.weights * exp(b)'), 2) / t;
+    %disp('frank');
     L = 0;
-    theta.weights = 2/M * ones(1, M);
-    disp(theta.weights);
+    %disp(L);
