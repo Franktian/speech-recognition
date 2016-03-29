@@ -58,7 +58,7 @@ function [gmms, mfcc, b] = gmmTrain( dir_train, max_iter, epsilon, M )
         % Training completed, assign the values to GMM
         gmms{speaker_i}.weights = theta.weights;
         gmms{speaker_i}.means = theta.means;
-        gmms{speaker_i}.covs = theta.covs;
+        gmms{speaker_i}.cov = theta.cov;
 
     end
 
@@ -67,35 +67,37 @@ function theta = initialize_theta(mfcc, M)
     
     theta.weights = 1/M * ones(1, M);
     theta.means = mfcc(1:M, :)';
-    theta.covs = repmat(eye(size(mfcc, 2)), 1, 1, M);
+    theta.cov = repmat(eye(size(mfcc, 2)), 1, 1, M);
 
 function [L, theta, b] = em_step(X, theta, M)    
     d = size(X, 2);
     t = size(X, 1);
 
-    % Do calculations in log domain
+    % Do calculations in log domain, E step
     numerator = zeros(t, M);
     for i=1:d
-        numerator = numerator + (repmat(X(:,i),1,M) - repmat(theta.means(i,:),t,1)).^2 ./ squeeze(repmat(theta.covs(i,i,:),1,t,1));
+        numerator = numerator + (repmat(X(:,i),1,M) - repmat(theta.means(i,:),t,1)).^2 ./ squeeze(repmat(theta.cov(i,i,:),1,t,1));
     end
     numerator = -0.5 * numerator;
-    disp(numerator);
 
     covs = zeros(d, M);
     for i=1:M
-        covs(:, i) = diag(theta.covs(:,:,i));
+        covs(:, i) = diag(theta.cov(:,:,i));
     end
 
     denominator = d/2 * log(2 * pi) + 1/2 * repmat(sum(log(covs), 1), t, 1);
 
     b = numerator - denominator;
-    %disp(b);
 
     % Get log likelihood
-    wb = theta.weights * exp(b)';
-    disp(wb);
-    disp(sum(log(wb), 2));
-    %L = sum(log(theta.weights * exp(b)'), 2) / t;
-    %disp('frank');
-    L = 0;
-    %disp(L);
+    L = sum(log(theta.weights * exp(b)'), 2) / t;
+
+    % M step
+    wb = repmat(theta.weights, t, 1) .* exp(b);
+    cond_probs = wb ./ repmat(sum(wb, 2), 1, M);
+
+    % Update theta
+    sum_t = sum(cond_probs, 1);
+    theta.weights = sum_t / t;
+    theta.means = X' * cond_probs ./ repmat(sum_t, d, 1);
+    disp(theta.means);
