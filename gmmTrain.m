@@ -37,10 +37,10 @@ function [gmms, mfcc, b] = gmmTrain( dir_train, max_iter, epsilon, M )
         for j = 1:length(MD)
             mfcc = [mfcc; load(strcat(dir_train, '/', speaker.name, '/', MD(j).name))];
         end
-        
+
         % Randomize the mfcc
         mfcc = mfcc(randperm(size(mfcc,1)),:);
-        
+
         % Initialization
         theta = initialize_theta(mfcc, M);
 
@@ -100,4 +100,7 @@ function [L, theta, b] = em_step(X, theta, M)
     sum_t = sum(cond_probs, 1);
     theta.weights = sum_t / t;
     theta.means = X' * cond_probs ./ repmat(sum_t, d, 1);
-    disp(theta.means);
+    sigmas = ((X.^2)' * cond_probs ./ repmat(sum_t, d, 1)) - theta.means.^2;
+    for i=1:M
+        theta.cov(:,:,i) = diag(sigmas(:,i));
+    end
