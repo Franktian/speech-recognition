@@ -1,4 +1,4 @@
-function [gmms, mfcc, b] = gmmTrain( dir_train, max_iter, epsilon, M )
+function [gmms, Ls] = gmmTrain( dir_train, max_iter, epsilon, M )
 % gmmTain
 %
 %  inputs:  dir_train  : a string pointing to the high-level
@@ -16,6 +16,7 @@ function [gmms, mfcc, b] = gmmTrain( dir_train, max_iter, epsilon, M )
 %                            gmm.cov     : DxDxM matrix of covariances. 
 %                                          (:,:,i) is for i^th mixture
     gmms = {};
+    Ls = zeros(1, 30);
 
     % Load the speech data
     SD = dir(dir_train);
@@ -54,6 +55,7 @@ function [gmms, mfcc, b] = gmmTrain( dir_train, max_iter, epsilon, M )
             prev_L = L;
             k = k + 1;
         end
+        Ls(speaker_i) = L;
 
         % Training completed, assign the values to GMM
         gmms{speaker_i}.weights = theta.weights;

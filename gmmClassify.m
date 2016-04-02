@@ -4,4 +4,6 @@ FD          = dir([testDir '/*.mfcc']);
 
 for i=1:length(FD)
     disp(FD(i).name);
+    mfcc = load(strcat('/u/cs401/speechdata/Testing/', FD(i).name));
+    disp(mfcc);
 end
