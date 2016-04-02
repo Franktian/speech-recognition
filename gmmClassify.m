@@ -12,11 +12,22 @@ max_iter    = 100;
 for i=1:length(FD)
     % Load the test data
     mfcc = load(strcat('/u/cs401/speechdata/Testing/', FD(i).name));
+    disp('*****');
+    disp(FD(i).name);
 
     TLs = zeros(1, length(gmms));
     % Compute likelihood for test data
     for j=1:length(gmms)
         [TLs(j), ~] = computeLikelihood(mfcc, gmms{j}, M);
     end
-    disp(TLs');
+
+    % Sort and find top 5 speakers
+    [~, indices] = sort(TLs, 'descend');
+    top_five = gmms(indices(1:5));
+
+    % Write to file
+    file_name = strcat('unkn_', int2str(i), '.lik');
+    disp(file_name);
+    %fileID = fopen(write_name, 'w');
+
 end
