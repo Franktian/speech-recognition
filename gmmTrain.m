@@ -26,8 +26,7 @@ function [gmms, Ls] = gmmTrain( dir_train, max_iter, epsilon, M )
         if strcmp(speaker.name, '.') || strcmp(speaker.name, '..')
             continue;
         end
-        %disp(i);
-        %disp(speaker);
+
         speaker_i = i - 2;
         gmms{speaker_i} = struct();
         gmms{speaker_i}.name = speaker.name;
@@ -75,6 +74,27 @@ function [L, theta, b] = em_step(X, theta, M)
     d = size(X, 2);
     t = size(X, 1);
 
+    % ComputeLikelihood - E step
+    [L, b] = compute_likelihood(X, theta, M);
+
+    % M step
+    wb = repmat(theta.weights, t, 1) .* exp(b);
+    cond_probs = wb ./ repmat(sum(wb, 2), 1, M);
+
+    % Update theta
+    sum_t = sum(cond_probs, 1);
+    theta.weights = sum_t / t;
+    theta.means = X' * cond_probs ./ repmat(sum_t, d, 1);
+    sigmas = ((X.^2)' * cond_probs ./ repmat(sum_t, d, 1)) - theta.means.^2;
+    for i=1:M
+        theta.cov(:,:,i) = diag(sigmas(:,i));
+    end
+
+
+function [L, b] = compute_likelihood(X, theta, M)
+    d = size(X, 2);
+    t = size(X, 1);
+
     % Do calculations in log domain, E step
     numerator = zeros(t, M);
     for i=1:d
@@ -93,16 +113,3 @@ function [L, theta, b] = em_step(X, theta, M)
 
     % Get log likelihood
     L = sum(log(theta.weights * exp(b)'), 2) / t;
-
-    % M step
-    wb = repmat(theta.weights, t, 1) .* exp(b);
-    cond_probs = wb ./ repmat(sum(wb, 2), 1, M);
-
-    % Update theta
-    sum_t = sum(cond_probs, 1);
-    theta.weights = sum_t / t;
-    theta.means = X' * cond_probs ./ repmat(sum_t, d, 1);
-    sigmas = ((X.^2)' * cond_probs ./ repmat(sum_t, d, 1)) - theta.means.^2;
-    for i=1:M
-        theta.cov(:,:,i) = diag(sigmas(:,i));
-    end
