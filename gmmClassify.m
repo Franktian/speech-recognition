@@ -10,7 +10,13 @@ max_iter    = 100;
 [gmms, Ls] = gmmTrain( trainDir, max_iter, epsilon, M );
 
 for i=1:length(FD)
-    disp(FD(i).name);
+    % Load the test data
     mfcc = load(strcat('/u/cs401/speechdata/Testing/', FD(i).name));
-    disp(mfcc);
+
+    TLs = zeros(1, length(gmms));
+    % Compute likelihood for test data
+    for j=1:length(gmms)
+        [TLs(j), ~] = computeLikelihood(mfcc, gmms{j}, M);
+    end
+    disp(TLs');
 end
