@@ -3,7 +3,7 @@ trainDir    = '/u/cs401/speechdata/Training';
 testDir     = '/u/cs401/speechdata/Testing';
 FD          = dir([testDir '/*.mfcc']);
 M           = 8;
-epsilon     = 0.01;
+epsilon     = 0.1;
 max_iter    = 100;
 
 % Load the gmm model and log likehoods
@@ -13,10 +13,15 @@ classifications = {
     'MMRP0','MPGH0','MKLW0','FSAH0','FVFB0',
     'FJSP0','MTPF0','MRDD0','MRSO0','MKLS0',
     'FETB0','FMEM0','FCJF0','MWAR0','MTJS0'};
+%fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
+% for i=1:length(FD)
+%     disp(FD(i).name);
+% end
 
 for i=1:length(FD)
+    fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
     % Load the test data
-    mfcc = load(strcat('/u/cs401/speechdata/Testing/', FD(i).name));
+    mfcc = load(strcat('/u/cs401/speechdata/Testing/', FD(fi).name));
 
     TLs = zeros(1, length(gmms));
     % Compute likelihood for test data
@@ -39,10 +44,6 @@ for i=1:length(FD)
     % Compute classification rate
     correct_num = 0;
     if fi < 16
-        disp('Our guess');
-        disp(gmms{ind(j)}.name);
-        disp('Correct');
-        disp(classifications{fi});
         if strcmp(gmms{ind(1)}.name, classifications{fi})
             correct_num = correct_num + 1;
         end
