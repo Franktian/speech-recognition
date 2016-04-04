@@ -7,21 +7,26 @@ epsilon     = 0.1;
 max_iter    = 100;
 
 % Load the gmm model and log likehoods
-%[gmms, Ls] = gmmTrain( trainDir, max_iter, epsilon, M );
-% These are the correct classifications for the first 15 people
-classifications = {
-    'MMRP0','MPGH0','MKLW0','FSAH0','FVFB0',
-    'FJSP0','MTPF0','MRDD0','MRSO0','MKLS0',
-    'FETB0','FMEM0','FCJF0','MWAR0','MTJS0'};
-%fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
-% for i=1:length(FD)
-%     disp(FD(i).name);
-% end
-%names = {FD.name};
-%disp(sprintf('%s', names{:}));
+[gmms, Ls] = gmmTrain( trainDir, max_iter, epsilon, M );
+% These are the correct classifications for the first 15 people(in the following order)
+classifications = {'MMRP0','MPGH0','MKLW0','FSAH0','FVFB0','FJSP0','MTPF0','MRDD0','MRSO0','MKLS0','FETB0','FMEM0','FCJF0','MWAR0','MTJS0'};
 
+correct_num = 0;
 
-    
+for i=1:length(FD)
+
+    mfcc = load(strcat('/u/cs401/speechdata/Testing/', FD(i).name));
+
+    guess = classifySpeaker(mfcc, gmms, M);
+
+    fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
+    if fi < 16
+        if strcmp(guess, classifications{fi})
+            correct_num = correct_num + 1;
+        end
+    end
+end
+disp(correct_num);
 
 % for i=1:length(FD)
 %     fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
