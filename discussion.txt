@@ -1,0 +1,16 @@
+2.3
+--------------------
+First we have set epsilon fixed to 0.01 and gradually decrease M from 8 to 2, and we have seen
+that classification rate has decreased as well. With parameters M = 8 and epsilon = 0.01, we
+were able to achieve a constant perfect score with all 15 correct. As M becomes 2 we observed
+that only 12 - 14 were able to be classified correctly and it's somewhat less stable than M = 8.
+
+In terms of eplison, we found it somewhat less relevant to the classification rate. As we set
+M = 8, most of the cases we can still achieve a perfect score. But it wasn's completely irrelevant,
+as we increase the value of eplison, the results we get become less stable compare to a smaller
+epsilon.
+
+When we remove all irrelevant 15 speakers as we calculate the classification rate, we obeserved a
+better result as we set M = 2 and eplilon = 0.9, we saw that the results are constantly ranges from
+13 to 15 with 14 and 15 much more than 13, this suggests that by reducing the number of irrelevant
+speakers to search for, it helps to increase the classification rate.
