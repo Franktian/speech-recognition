@@ -1,4 +1,4 @@
-function guess = classifySpeaker(mfcc, gmms, M)
+function [guess, res, ind] = classifySpeaker(mfcc, gmms, M)
     % Given the mfcc data and the Gaussian model output the guess
 
     TLs = zeros(1, length(gmms));
@@ -8,7 +8,7 @@ function guess = classifySpeaker(mfcc, gmms, M)
     end
 
     % Sort
-    [~, ind] = sort(TLs, 'descend');
+    [res, ind] = sort(TLs, 'descend');
 
     % Make the guess
     guess = gmms{ind(1)}.name;
