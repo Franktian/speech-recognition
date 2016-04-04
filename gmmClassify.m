@@ -7,7 +7,7 @@ epsilon     = 0.1;
 max_iter    = 100;
 
 % Load the gmm model and log likehoods
-[gmms, Ls] = gmmTrain( trainDir, max_iter, epsilon, M );
+%[gmms, Ls] = gmmTrain( trainDir, max_iter, epsilon, M );
 % These are the correct classifications for the first 15 people
 classifications = {
     'MMRP0','MPGH0','MKLW0','FSAH0','FVFB0',
@@ -17,39 +17,44 @@ classifications = {
 % for i=1:length(FD)
 %     disp(FD(i).name);
 % end
+%names = {FD.name};
+%disp(sprintf('%s', names{:}));
 
-for i=1:length(FD)
-    fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
-    % Load the test data
-    mfcc = load(strcat('/u/cs401/speechdata/Testing/', FD(fi).name));
 
-    TLs = zeros(1, length(gmms));
-    % Compute likelihood for test data
-    for j=1:length(gmms)
-        [TLs(j), ~] = computeLikelihood(mfcc, gmms{j}, M);
-    end
+    
 
-    % Sort
-    [res, ind] = sort(TLs, 'descend');
-
-    % Write top five to file
-    fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
-    file_name = strcat('unkn_', int2str(fi), '.lik');
-    fileID = fopen(file_name, 'w');
-    for j=1:5
-        fprintf(fileID, '%2.4f\t%s\n', res(j), gmms{ind(j)}.name);
-    end
-    fclose(fileID);
-
-    % Compute classification rate
-    correct_num = 0;
-    if fi < 16
-        if strcmp(gmms{ind(1)}.name, classifications{fi})
-            correct_num = correct_num + 1;
-        end
-    end
-
-end
-
-% Classification rate
-disp(correct_num/15);
+% for i=1:length(FD)
+%     fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
+%     % Load the test data
+%     mfcc = load(strcat('/u/cs401/speechdata/Testing/', FD(fi).name));
+% 
+%     TLs = zeros(1, length(gmms));
+%     % Compute likelihood for test data
+%     for j=1:length(gmms)
+%         [TLs(j), ~] = computeLikelihood(mfcc, gmms{j}, M);
+%     end
+% 
+%     % Sort
+%     [res, ind] = sort(TLs, 'descend');
+% 
+%     % Write top five to file
+%     fi = sscanf(FD(i).name, 'unkn_%d.mfcc');
+%     file_name = strcat('unkn_', int2str(fi), '.lik');
+%     fileID = fopen(file_name, 'w');
+%     for j=1:5
+%         fprintf(fileID, '%2.4f\t%s\n', res(j), gmms{ind(j)}.name);
+%     end
+%     fclose(fileID);
+% 
+%     % Compute classification rate
+%     correct_num = 0;
+%     if fi < 16
+%         if strcmp(gmms{ind(1)}.name, classifications{fi})
+%             correct_num = correct_num + 1;
+%         end
+%     end
+% 
+% end
+% 
+% % Classification rate
+% disp(correct_num/15);
