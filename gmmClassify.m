@@ -8,6 +8,11 @@ max_iter    = 100;
 
 % Load the gmm model and log likehoods
 [gmms, Ls] = gmmTrain( trainDir, max_iter, epsilon, M );
+% These are the correct classifications for the first 15 people
+classifications = {
+    'MMRP0','MPGH0','MKLW0','FSAH0','FVFB0',
+    'FJSP0','MTPF0','MRDD0','MRSO0','MKLS0',
+    'FETB0','FMEM0','FCJF0','MWAR0','MTJS0'};
 
 for i=1:length(FD)
     % Load the test data
@@ -31,4 +36,19 @@ for i=1:length(FD)
     end
     fclose(fileID);
 
+    % Compute classification rate
+    correct_num = 0;
+    if fi < 16
+        disp('Our guess');
+        disp(gmms{ind(j)}.name);
+        disp('Correct');
+        disp(classifications{fi});
+        if strcmp(gmms{ind(1)}.name, classifications{fi})
+            correct_num = correct_num + 1;
+        end
+    end
+
 end
+
+% Classification rate
+disp(correct_num/15);
