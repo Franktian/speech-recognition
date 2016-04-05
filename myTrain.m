@@ -1,7 +1,12 @@
 % Initial parameter setup
 trainDir    = '/u/cs401/speechdata/Training';
 SD          = dir(trainDir);
-phnStruct = {};
+phnStruct   = {};
+hmms        = struct();
+max_iter    = 5;
+fn_HMM      = 'savedHMM.mat';
+
+addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 
 for i=1:length(SD)
     speaker = SD(i);
@@ -23,22 +28,41 @@ for i=1:length(SD)
 
         % Readin corresponding mfcc
         mfcc = load(strcat(trainDir, '/', speaker.name, '/', [PF(j).name(1:end-3), 'mfcc']));
+        mfcc = mfcc';
+
         for p=1:length(phns)
             % phn indices are 0 based, fixed to accomedate matlab 1 based
             start = starts(p)/128 + 1;
             en = ends(p)/128 + 1;
+            % Prevent index overflow
+            if length(mfcc) <= en
+                en = length(mfcc);
+            end
             phn = char(phns(p));
 
             if strcmp(phn, 'h#')
                 phn = 'sil';
             end
-
+            
             if ~isfield(phnStruct, phn)
                 phnStruct.(phn) = {};
             end
+
+            % Append the mfcc to the corresponding phoneme
             pi = length(phnStruct.(phn)) + 1;
-            mfcc = mfcc';
             phnStruct.(phn){pi} = mfcc(:, start:end);
         end
+        fclose(phnFile);
     end
 end
+
+% Training Hidden Markov Models
+phnNames = fieldnames(phnStruct);
+for i=1:length(phnNames)
+    disp(i);
+    phnName = phnNames{i};
+    hmms.(phnName) = initHMM(phnStruct.(phnName));
+    [hmms.(phn), ~] = trainHMM(hmms.(phnName), phnStruct.(phnName), max_iter);
+end
+
+save( fn_HMM, 'hmms', '-mat');
