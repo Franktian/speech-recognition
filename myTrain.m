@@ -4,9 +4,9 @@ SD          = dir(trainDir);
 phnStruct   = {};
 hmms        = struct();
 max_iter    = 5;
-fn_HMM      = 'savedHMM.mat';
-M           = 4;
-Q           = 3;
+fn_HMM      = 'savedHMM_Q2.mat';
+M           = 8;
+Q           = 2;
 D           = 14;
 
 addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
@@ -32,6 +32,7 @@ for i=1:length(SD)
         % Readin corresponding mfcc
         mfcc = load(strcat(trainDir, '/', speaker.name, '/', [PF(j).name(1:end-3), 'mfcc']));
         mfcc = mfcc';
+        mfcc = mfcc(1:D, :);
 
         for p=1:length(phns)
             % phn indices are 0 based, fixed to accomedate matlab 1 based
@@ -68,4 +69,4 @@ for i=1:length(phnNames)
     [hmms.(phn), ~] = trainHMM(hmms.(phnName), phnStruct.(phnName), max_iter);
 end
 
-save( fn_HMM, 'hmms_M4', '-mat');
+save( fn_HMM, 'hmms', '-mat');
