@@ -4,9 +4,9 @@ SD          = dir(trainDir);
 phnStruct   = {};
 hmms        = struct();
 max_iter    = 5;
-fn_HMM      = 'savedHMM_Q2.mat';
+fn_HMM      = 'savedHMM_Default.mat';
 M           = 8;
-Q           = 2;
+Q           = 3;
 D           = 14;
 
 addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
@@ -54,7 +54,7 @@ for i=1:length(SD)
 
             % Append the mfcc to the corresponding phoneme
             pi = length(phnStruct.(phn)) + 1;
-            phnStruct.(phn){pi} = mfcc(:, start:end);
+            phnStruct.(phn){pi} = mfcc(:, start:en);
         end
         fclose(phnFile);
     end
@@ -64,6 +64,7 @@ end
 phnNames = fieldnames(phnStruct);
 for i=1:length(phnNames)
     disp(i);
+    disp(fn_HMM);
     phnName = phnNames{i};
     hmms.(phnName) = initHMM(phnStruct.(phnName), M, Q);
     [hmms.(phn), ~] = trainHMM(hmms.(phnName), phnStruct.(phnName), max_iter);
