@@ -5,6 +5,9 @@ phnStruct   = {};
 hmms        = struct();
 max_iter    = 5;
 fn_HMM      = 'savedHMM.mat';
+M           = 4;
+Q           = 3;
+D           = 14;
 
 addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 
@@ -61,8 +64,8 @@ phnNames = fieldnames(phnStruct);
 for i=1:length(phnNames)
     disp(i);
     phnName = phnNames{i};
-    hmms.(phnName) = initHMM(phnStruct.(phnName));
+    hmms.(phnName) = initHMM(phnStruct.(phnName), M, Q);
     [hmms.(phn), ~] = trainHMM(hmms.(phnName), phnStruct.(phnName), max_iter);
 end
 
-save( fn_HMM, 'hmms', '-mat');
+save( fn_HMM, 'hmms_M4', '-mat');
