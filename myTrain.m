@@ -18,7 +18,7 @@ for i=1:length(SD)
 
     % Read phoneme
     PF = dir(strcat(trainDir, '/', speaker.name, '/*.phn'));
-    
+
     for j=1:length(PF)
         phnFile = fopen( [trainDir '/' speaker.name '/' PF(j).name], 'r');
         texts = textscan(phnFile, '%d %d %s');
