@@ -3,6 +3,11 @@ testDir     = '/u/cs401/speechdata/Testing/';
 phnFiles    = '/u/cs401/speechdata/Testing/*.phn';
 SD          = dir(phnFiles);
 phnStruct   = {};
+hmms        = hmms_default;
+numPhns     = 0;
+correctPhns = 0;
+
+addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 
 for i=1:length(SD)
     speaker = SD(i);
@@ -17,8 +22,6 @@ for i=1:length(SD)
     mfcc = load(strcat(testDir, '/', [speaker.name(1:end-3), 'mfcc']));
     mfcc = mfcc';
     
-    disp(mfcc);
-    
     for p=1:length(phns)
         % phn indices are 0 based, fixed to accomedate matlab 1 based
         start = starts(p)/128 + 1;
@@ -32,13 +35,37 @@ for i=1:length(SD)
         if strcmp(phn, 'h#')
             phn = 'sil';
         end
+        
+        % Classify the test phonemes
+        predict_phn = {};
+        predict_phn.name = '';
+        predict_phn.prob = -Inf;
 
-        if ~isfield(phnStruct, phn)
-            phnStruct.(phn) = {};
+        trained_phns = fieldnames(hmms);
+        for t=1:length(trained_phns)
+            trained_phn = char(trained_phns{t});
+%             disp(trained_phn);
+            prob = loglikHMM(hmms.(trained_phn), mfcc(:, start:en));
+%             disp(prob);
+
+            if prob > predict_phn.prob
+                predict_phn.name = trained_phn;
+                predict_phn.prob = prob;
+            end
         end
 
-        % Append the mfcc to the corresponding phoneme
-        pi = length(phnStruct.(phn)) + 1;
-        phnStruct.(phn){pi} = mfcc(:, start:end);
+        if strcmp(predict_phn.name, phn)
+            correctPhns = correctPhns + 1;
+        end
+        numPhns = numPhns + 1;
+        disp('*****');
+%         disp(predict_phn.name);
+%         disp(phn);
+%         disp(correctPhns);
+%         disp(numPhns);
+
     end
 end
+
+disp(correctPhns/numPhns);
+
