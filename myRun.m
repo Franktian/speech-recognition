@@ -8,8 +8,8 @@ phnStruct   = {};
 % hmms        = hmms_M4;
 numPhns     = 0;
 correctPhns = 0;
-fn_HMM      = 'savedHMM_D7.mat';
-D           = 7;
+fn_HMM      = 'savedHMM_HD.mat';
+D           = 14;
 load(fn_HMM);
 
 addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
@@ -64,7 +64,7 @@ for i=1:length(SD)
             correctPhns = correctPhns + 1;
         end
         numPhns = numPhns + 1;
-        disp('*****');
+        disp(fn_HMM);
         disp(correctPhns);
         disp(numPhns);
 
