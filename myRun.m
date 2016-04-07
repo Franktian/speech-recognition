@@ -1,17 +1,18 @@
-% clear;
-% clc;
+clear;
+clc;
 % Initial parameter setup
 testDir     = '/u/cs401/speechdata/Testing/';
 phnFiles    = '/u/cs401/speechdata/Testing/*.phn';
 SD          = dir(phnFiles);
 phnStruct   = {};
-% hmms        = hmms_default;
+% hmms        = hmms_M4;
 numPhns     = 0;
 correctPhns = 0;
-fn_HMM      = 'savedHMM_Default.mat';
+fn_HMM      = 'savedHMM_Q2HD.mat';
+D           = 14;
 load(fn_HMM);
 
-addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.4'));
+addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 
 for i=1:length(SD)
     speaker = SD(i);
@@ -25,7 +26,8 @@ for i=1:length(SD)
     
     mfcc = load(strcat(testDir, '/', [speaker.name(1:end-3), 'mfcc']));
     mfcc = mfcc';
-    
+    mfcc = mfcc(1:D, :);
+
     for p=1:length(phns)
         % phn indices are 0 based, fixed to accomedate matlab 1 based
         start = starts(p)/128 + 1;
@@ -62,14 +64,11 @@ for i=1:length(SD)
             correctPhns = correctPhns + 1;
         end
         numPhns = numPhns + 1;
-        disp('*****');
-%         disp(predict_phn.name);
-%         disp(phn);
+        disp(fn_HMM);
         disp(correctPhns);
         disp(numPhns);
 
     end
 end
-
+disp(fn_HMM);
 disp(correctPhns/numPhns);
-
