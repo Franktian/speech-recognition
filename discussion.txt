@@ -14,3 +14,10 @@ When we remove all irrelevant 15 speakers as we calculate the classification rat
 better result as we set M = 2 and eplilon = 0.9, we saw that the results are constantly ranges from
 13 to 15 with 14 and 15 much more than 13, this suggests that by reducing the number of irrelevant
 speakers to search for, it helps to increase the classification rate.
+
+
+
+3.1
+-------------------
+With all parameters as default when training the HMM(M = 8, Q = 3, D = 14 and all training data),
+we have observed an accuracy of 40.97%(449 correct out of 1096 phonemes).
