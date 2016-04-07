@@ -4,14 +4,14 @@ SD          = dir(trainDir);
 phnStruct   = {};
 hmms        = struct();
 max_iter    = 5;
-fn_HMM      = 'savedHMM_Default.mat';
+fn_HMM      = 'savedHMM_Q2HD.mat';
 M           = 8;
-Q           = 3;
+Q           = 2;
 D           = 14;
 
 addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 
-for i=1:length(SD)
+for i=1:length(SD) - 15
     speaker = SD(i);
     % Ignore current and previous directory
     if strcmp(speaker.name, '.') || strcmp(speaker.name, '..')
