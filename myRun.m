@@ -8,7 +8,7 @@ phnStruct   = {};
 % hmms        = hmms_M4;
 numPhns     = 0;
 correctPhns = 0;
-fn_HMM      = 'savedHMM_HD.mat';
+fn_HMM      = 'savedHMM_Q2HD.mat';
 D           = 14;
 load(fn_HMM);
 
