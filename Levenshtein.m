@@ -14,10 +14,6 @@ if nargin < 2
     annotation_dir = '/u/cs401/speechdata/Testing';
 end
 
-UP = -1;
-LEFT = 0;
-UP_LEFT = 1;
-
 SE = 0;
 IE = 0;
 DE = 0;
@@ -31,6 +27,7 @@ annoDir = dir(annotation_dir);
 
 for i=1:length(hypoSens)
     oriHyposen = hypoSens{i};
+    
     hyposen = char(lower(regexprep(oriHyposen, '[^a-zA-Z ]', '')));
     hypoArray = strsplit(hyposen);
     
@@ -40,55 +37,57 @@ for i=1:length(hypoSens)
     annoArray = strsplit(annosen);
     word_count = word_count + length(annoArray);
     
-    n = length(annoArray);
-    m = length(hypoArray);
-    R = zeros(n+1, m+1);
-    B = zeros(n+1, m+1);
-    R(:, 1) = inf;
-    R(1, :) = inf;
-    R(1, 1) = 0;
-    for x=2:n+1
-        for y=2:m+1
-            del = R(x-1, y)+1;
-            sub = R(x-1, y-1);
-            if ~strcmp(annoArray(x-1), hypoArray(y-1))
-                sub = sub + 1;
-            end
-            ins = R(x, y-1) + 1;
-
-            R(x, y) = min([del; sub; ins]);
-
-            if R(x, y) == del
-                B(x, y) = UP;
-            elseif R(x, y) == ins
-                B(x, y) = LEFT;
-            else
-                B(x, y) = UP_LEFT;
-            end
-        end
-    end
-
-    del = 0;
-    sub = 0;
-    ins = 0;
-    x = n+1;
-    y = m+1;
-
-    while x > 1 & y > 1
-        if B(x, y) == UP
-            del = del + 1;
-            x = x - 1;
-        elseif B(x, y) == LEFT
-            ins = ins + 1;
-            y = y - 1;
-        else
-            if ~strcmp(annoArray(x-1), hypoArray(y-1))
-                sub = sub + 1;
-            end
-            x = x - 1;
-            y = y - 1;
-        end
-    end
+    [sub, ins, del]=singleSentLevenshtein(hypoArray, annoArray);
+    
+%     n = length(annoArray);
+%     m = length(hypoArray);
+%     R = zeros(n+1, m+1);
+%     B = zeros(n+1, m+1);
+%     R(:, 1) = inf;
+%     R(1, :) = inf;
+%     R(1, 1) = 0;
+%     for x=2:n+1
+%         for y=2:m+1
+%             del = R(x-1, y)+1;
+%             sub = R(x-1, y-1);
+%             if ~strcmp(annoArray(x-1), hypoArray(y-1))
+%                 sub = sub + 1;
+%             end
+%             ins = R(x, y-1) + 1;
+% 
+%             R(x, y) = min([del; sub; ins]);
+% 
+%             if R(x, y) == del
+%                 B(x, y) = UP;
+%             elseif R(x, y) == ins
+%                 B(x, y) = LEFT;
+%             else
+%                 B(x, y) = UP_LEFT;
+%             end
+%         end
+%     end
+% 
+%     del = 0;
+%     sub = 0;
+%     ins = 0;
+%     x = n+1;
+%     y = m+1;
+% 
+%     while x > 1 & y > 1
+%         if B(x, y) == UP
+%             del = del + 1;
+%             x = x - 1;
+%         elseif B(x, y) == LEFT
+%             ins = ins + 1;
+%             y = y - 1;
+%         else
+%             if ~strcmp(annoArray(x-1), hypoArray(y-1))
+%                 sub = sub + 1;
+%             end
+%             x = x - 1;
+%             y = y - 1;
+%         end
+%     end
 
     SE = SE + sub;
     DE = DE + del;
