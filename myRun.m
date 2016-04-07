@@ -1,13 +1,17 @@
+% clear;
+% clc;
 % Initial parameter setup
 testDir     = '/u/cs401/speechdata/Testing/';
 phnFiles    = '/u/cs401/speechdata/Testing/*.phn';
 SD          = dir(phnFiles);
 phnStruct   = {};
-hmms        = hmms_default;
+% hmms        = hmms_default;
 numPhns     = 0;
 correctPhns = 0;
+fn_HMM      = 'savedHMM_Default.mat';
+load(fn_HMM);
 
-addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
+addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.4'));
 
 for i=1:length(SD)
     speaker = SD(i);
@@ -61,8 +65,8 @@ for i=1:length(SD)
         disp('*****');
 %         disp(predict_phn.name);
 %         disp(phn);
-%         disp(correctPhns);
-%         disp(numPhns);
+        disp(correctPhns);
+        disp(numPhns);
 
     end
 end
