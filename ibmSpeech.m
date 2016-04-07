@@ -6,5 +6,6 @@ FD           = dir(flacFiles);
 for i=1:length(FD)
     % Get the absolute file path
     flac = [testDir '/' FD(i).name];
-    disp(flac);
+    text = speechToText(flac);
+    disp(text);
 end
