@@ -43,3 +43,159 @@ features with respect to a speaker such as tone, sound speed, vibration rate etc
 -------------------
 With all parameters as default when training the HMM(M = 8, Q = 3, D = 14 and all training data),
 we have observed an accuracy of 40.97%(449 correct out of 1096 phonemes).
+
+
+3.2 Discussion on different parameters for HMM
+-------------------
+We use the following terms to represent our variations with the data
+M8:  M         = 8
+M4:  M         = 4
+Q3:  Q         = 3
+Q2:  Q         = 2
+D14: Dimension = 14
+D7:  Dimension = 7
+FD:  Speaker   = 30
+HD:  Speader   = 15
+
+
+Classification rates
+M8Q3D14FD: 449/1096 (0.4097)
+M4Q3D14FD: 429/1096 (0.3914)
+M4Q2D14FD: 435/1096 (0.3969)
+M4Q2D7FD:  312/1096 (0.2847)
+M4Q2D7HD:  316/1096 (0.2847)
+M8Q2D14FD: 438/1096 (0.3996)
+M8Q2D7FD:  334/1096 (0.3047)
+M8Q2D7HD:  310/1096 (0.2828)
+M8Q3D7FD:  349/1096 (0.3184)
+M8Q3D7HD:  302/1096 (0.2759)
+M8Q3D14HD: 359/1096 (0.3276)
+M4Q3D7FD:  312/1096 (0.2847)
+M4Q3D7HD:  296/1096 (0.2701)
+M4Q3D14HD: 377/1096 (0.3400)
+M8Q2D14HD: 334/1096 (0.3047)
+
+3.3 Word-error rates
+-------------------
+hypothesis sentence: now here is truly hey marvel
+sentence SE = 1.666667e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 2.777778e-02
+
+hypothesis sentence: cat tune features a muskrat and a tadpole
+sentence SE = 2.500000e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 3.125000e-02
+
+hypothesis sentence: just let me die in peace
+sentence SE = 0, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 0
+
+hypothesis sentence: the sculptor looked at him bug id and amazed angry
+sentence SE = 1.111111e-01, sentence IE = 1.111111e-01, sentence DE = 0
+sentence proportion of total error = 2.469136e-02
+
+hypothesis sentence: a flash illuminated the trees as crook bolt tweaked several directions
+sentence SE = 2.307692e-01, sentence IE = 0, sentence DE = 1.538462e-01
+sentence proportion of total error = 2.958580e-02
+
+hypothesis sentence: this is particularly true sight selection
+sentence SE = 1.428571e-01, sentence IE = 0, sentence DE = 1.428571e-01
+sentence proportion of total error = 4.081633e-02
+
+hypothesis sentence: we would lose sour expert markets deny ourselves the imports we need
+sentence SE = 1.538462e-01, sentence IE = 0, sentence DE = 7.692308e-02
+sentence proportion of total error = 1.775148e-02
+
+hypothesis sentence: compton number of teaspoons of so he sauce that you add
+sentence SE = 2.000000e-01, sentence IE = 2.000000e-01, sentence DE = 1.000000e-01
+sentence proportion of total error = 5.000000e-02
+
+hypothesis sentence: finally he asked do you object to petting
+sentence SE = 0, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 0
+
+hypothesis sentence: draw every other line first then fill into interior
+sentence SE = 2.000000e-01, sentence IE = 0, sentence DE = 1.000000e-01
+sentence proportion of total error = 3.000000e-02
+
+hypothesis sentence: change involves the displacement of fawn
+sentence SE = 1.666667e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 2.777778e-02
+
+hypothesis sentence: two is puzzle mint there suddenly was no haze
+sentence SE = 3.750000e-01, sentence IE = 1.250000e-01, sentence DE = 0
+sentence proportion of total error = 6.250000e-02
+
+hypothesis sentence: donnas me to carry oily rag like that
+sentence SE = 1.000000e-01, sentence IE = 0, sentence DE = 2.000000e-01
+sentence proportion of total error = 3.000000e-02
+
+hypothesis sentence: the the full moon shone brightly that night
+sentence SE = 0, sentence IE = 1.428571e-01, sentence DE = 0
+sentence proportion of total error = 2.040816e-02
+
+hypothesis sentence: tugboats are capable falling huge loads
+sentence SE = 1.428571e-01, sentence IE = 0, sentence DE = 1.428571e-01
+sentence proportion of total error = 4.081633e-02
+
+hypothesis sentence: did tatoo academic bidding
+sentence SE = 2.000000e-01, sentence IE = 0, sentence DE = 2.000000e-01
+sentence proportion of total error = 8.000000e-02
+
+hypothesis sentence: see add your dark suit and greasy wash water all year
+sentence SE = 2.727273e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 2.479339e-02
+
+hypothesis sentence: the thick forest was nearly over helmed by dutch elm disease
+sentence SE = 9.090909e-02, sentence IE = 9.090909e-02, sentence DE = 9.090909e-02
+sentence proportion of total error = 2.479339e-02
+
+hypothesis sentence: cow ten number of teaspoons of soysauce that you add
+sentence SE = 2.000000e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 2.000000e-02
+
+hypothesis sentence: norwegian sweaters are made of lambs wool
+sentence SE = 0, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 0
+
+hypothesis sentence: we think differently
+sentence SE = 0, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 0
+
+hypothesis sentence: a too pays too should be squeezed from the bottom
+sentence SE = 2.222222e-01, sentence IE = 1.111111e-01, sentence DE = 0
+sentence proportion of total error = 3.703704e-02
+
+hypothesis sentence: ran away on a black night with an awful wedded man
+sentence SE = 1.818182e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 1.652893e-02
+
+hypothesis sentence: down ask me to carry an oily rag like that
+sentence SE = 1.000000e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 1.000000e-02
+
+hypothesis sentence: dont ask me to carry an oily rag like that
+sentence SE = 0, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 0
+
+hypothesis sentence: index words an electronic switches may be reserved in the following way
+sentence SE = 1.666667e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 1.388889e-02
+
+hypothesis sentence: the avalanche triggered minor earth way
+sentence SE = 1.666667e-01, sentence IE = 1.666667e-01, sentence DE = 1.666667e-01
+sentence proportion of total error = 8.333333e-02
+
+hypothesis sentence: donnas me to carry an oily rag like that
+sentence SE = 1.000000e-01, sentence IE = 0, sentence DE = 1.000000e-01
+sentence proportion of total error = 2.000000e-02
+
+hypothesis sentence: the thick elm for his was nail he over well bye touch elm disease
+sentence SE = 4.545455e-01, sentence IE = 2.727273e-01, sentence DE = 0
+sentence proportion of total error = 6.611570e-02
+
+hypothesis sentence: when hall else fails use forks
+sentence SE = 3.333333e-01, sentence IE = 0, sentence DE = 0
+sentence proportion of total error = 5.555556e-02
+
+total SE = 1.653846e-01, total DE = 5.000000e-02, total IE = 4.230769e-02
+total proportion of error = 2.576923e-01
