@@ -16,6 +16,28 @@ better result as we set M = 2 and eplilon = 0.9, we saw that the results are con
 speakers to search for, it helps to increase the classification rate.
 
 
+How might you improve the classication accuracy of the Gaussian mixtures, without adding more
+training data?
+
+Use full covariance matrix for the Gaussian Mixture Model instead of diagnoal. In such a case we
+can simulate the dependencies among each dimension instead of assuming they are independent to
+each other(which they are highly likely not)
+
+
+When would your classifier decide that a given test utterance comes from none of the trained speaker
+models, and how would your classifier come to this decision?
+
+Compute the average likelihood across all utterances with the highest and lowest removed, with the
+mean value of the likelihood we can perform a hypothetical z test for every single utterance with
+a predefined significant value say alpha equals to 0.05 and thus to tell whether the test utterance
+comes from none of the trained speaker.
+
+Can you think of some alternative methods for doing speaker identification that don't use Gaussian
+mixtures?
+
+We can use feature extractions to train models for predictions with appropriately selected meaningful
+features such as tone, sound speed, vibration rate etc.
+
 
 3.1
 -------------------
