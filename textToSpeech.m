@@ -1,6 +1,5 @@
 function textToSpeech(text, voice, flac)
     text = strrep(text, ' ', '%20');
-    disp(text);
     username = '807e27a9-53ed-41fc-9d51-02fc424151e1';
     password = 'OjtAQJTelGTk';
     h1 = '--header "Accept: audio/flac" ';
