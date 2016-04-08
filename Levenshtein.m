@@ -9,11 +9,6 @@ function [SE IE DE LEV_DIST] =Levenshtein(hypothesis,annotation_dir)
 %	DE: proportion of deletion errors over all the hypotheses
 %	LEV_DIST: proportion of overall error in all hypotheses
 
-if nargin < 2
-    hypothesis = '/u/cs401/speechdata/Testing/hypotheses.txt';
-    annotation_dir = '/u/cs401/speechdata/Testing';
-end
-
 SE = 0;
 IE = 0;
 DE = 0;
@@ -63,4 +58,3 @@ fprintf(output, 'total SE = %d, total DE = %d, total IE = %d\ntotal proportion o
 fclose(output);
 
 end
-
