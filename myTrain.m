@@ -4,14 +4,14 @@ SD          = dir(trainDir);
 phnStruct   = {};
 hmms        = struct();
 max_iter    = 5;
-fn_HMM      = 'savedHMM_Q2HD.mat';
+hmmFile      = 'Default.mat';
 M           = 8;
-Q           = 2;
+Q           = 3;
 D           = 14;
 
 addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 
-for i=1:length(SD) - 15
+for i=1:length(SD)
     speaker = SD(i);
     % Ignore current and previous directory
     if strcmp(speaker.name, '.') || strcmp(speaker.name, '..')
@@ -47,7 +47,7 @@ for i=1:length(SD) - 15
             if strcmp(phn, 'h#')
                 phn = 'sil';
             end
-            
+
             if ~isfield(phnStruct, phn)
                 phnStruct.(phn) = {};
             end
@@ -64,10 +64,10 @@ end
 phnNames = fieldnames(phnStruct);
 for i=1:length(phnNames)
     disp(i);
-    disp(fn_HMM);
+    disp(hmmFile);
     phnName = phnNames{i};
     hmms.(phnName) = initHMM(phnStruct.(phnName), M, Q);
     [hmms.(phn), ~] = trainHMM(hmms.(phnName), phnStruct.(phnName), max_iter);
 end
 
-save( fn_HMM, 'hmms', '-mat');
+save( hmmFile, 'hmms', '-mat');

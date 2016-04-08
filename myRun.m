@@ -1,16 +1,18 @@
 clear;
 clc;
+% This line is necessary if Default.mat is not presented
+% myTrain
+
 % Initial parameter setup
 testDir     = '/u/cs401/speechdata/Testing/';
 phnFiles    = '/u/cs401/speechdata/Testing/*.phn';
 SD          = dir(phnFiles);
 phnStruct   = {};
-% hmms        = hmms_M4;
 numPhns     = 0;
 correctPhns = 0;
-fn_HMM      = 'savedHMM_D7.mat';
-D           = 7;
-load(fn_HMM);
+hmmFile      = 'Default.mat';
+D           = 14;
+load(hmmFile);
 
 addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 
@@ -23,7 +25,7 @@ for i=1:length(SD)
     starts = texts{1};
     ends = texts{2};
     phns = texts{3};
-    
+
     mfcc = load(strcat(testDir, '/', [speaker.name(1:end-3), 'mfcc']));
     mfcc = mfcc';
     mfcc = mfcc(1:D, :);
@@ -41,7 +43,7 @@ for i=1:length(SD)
         if strcmp(phn, 'h#')
             phn = 'sil';
         end
-        
+
         % Classify the test phonemes
         predict_phn = {};
         predict_phn.name = '';
@@ -64,11 +66,11 @@ for i=1:length(SD)
             correctPhns = correctPhns + 1;
         end
         numPhns = numPhns + 1;
-        disp(fn_HMM);
+        disp(hmmFile);
         disp(correctPhns);
         disp(numPhns);
 
     end
 end
-disp(fn_HMM);
+disp(hmmFile);
 disp(correctPhns/numPhns);
