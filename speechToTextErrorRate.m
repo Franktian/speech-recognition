@@ -1,20 +1,14 @@
-function speechToTextErrorRate(flacFiles, outputname)
-
-if ~exist('flacFile', 'var')
-    flacFiles    = '/u/cs401/speechdata/Testing/*.flac';
-end
+function speechToTextErrorRate(flacDir, flacPrefix, outputname)
 
 testDir      = '/u/cs401/speechdata/Testing/';
-FD           = dir(flacFiles);
+FD           = dir(flacDir);
 
 % Speech-to-text
-if ~exist('outputname', 'var')
-    outputname = '4.1output.txt';
-end
 output = fopen(outputname, 'w');
-for i=1:length(FD)
+for i=1:30
     % Get the absolute file path
-    flac = [testDir '/' 'unkn_' int2str(i) '.flac'];
+    flac = [flacDir '/' flacPrefix int2str(i) '.flac'];
+    disp(flac);
     text = char(speechToText(flac));
     textArray = strsplit(lower(text));
     
