@@ -24,8 +24,11 @@ for i=1:30
     sentSE = se_count / word_count;
     sentIE = ie_count / word_count;
     sentDE = de_count / word_count;
+    sentWER = (se_count + ie_count + de_count) / word_count;
+    str_test = sprintf('%d %d %d %d', se_count, ie_count, de_count, word_count);
+    disp(str_test);
 
-    fprintf(output, 'recognized transcript: %s\nSE = %.6f, IE = %.6f, DE = %.6f\n\n', text, sentSE, sentIE, sentDE);
+    fprintf(output, 'recognized transcript: %s\nSE = %.6f, IE = %.6f, DE = %.6f, WER = %.6f\n\n', text, sentSE, sentIE, sentDE, sentWER);
     fclose(annoFile);
 end
 fclose(output);
