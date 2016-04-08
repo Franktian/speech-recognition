@@ -36,7 +36,7 @@ Can you think of some alternative methods for doing speaker identification that 
 mixtures?
 
 We can use feature extractions to train models for predictions with appropriately selected meaningful
-features such as tone, sound speed, vibration rate etc.
+features with respect to a speaker such as tone, sound speed, vibration rate etc.
 
 
 3.1
