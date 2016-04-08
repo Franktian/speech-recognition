@@ -1,6 +1,8 @@
 flacFiles    = '/u/cs401/speechdata/Testing/*.flac';
+likFiles     = './*.lik';
 testDir      = '/u/cs401/speechdata/Testing/';
 FD           = dir(flacFiles);
+LD           = dir(likFiles);
 
 % Speech-to-text
 output = fopen('4.1output.txt', 'w');
@@ -27,3 +29,12 @@ for i=1:length(FD)
     fclose(annoFile);
 end
 fclose(output);
+
+% Text-to-speech
+% Assumed .lik files in the same directory as this script
+for i=1:length(LD)
+    lik = fopen(['unkn_' int2str(i) '.lik']);
+    likContent = textscan(lik, '%s', 'delimiter','\n');
+    disp(likContent{1});
+    fclose(lik);
+end
