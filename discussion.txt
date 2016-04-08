@@ -47,7 +47,33 @@ we have observed an accuracy of 40.97%(449 correct out of 1096 phonemes).
 
 3.2 Discussion on different parameters for HMM
 -------------------
+We use the following terms to represent our variations with the data
+M8:  M         = 8
+M4:  M         = 4
+Q3:  Q         = 3
+Q2:  Q         = 2
+D14: Dimension = 14
+D7:  Dimension = 7
+FD:  Speaker   = 30
+HD:  Speader   = 15
 
+
+Classification rates
+M8Q3D14FD: 449/1096 (0.4097)
+M4Q3D14FD: 429/1096 (0.3914)
+M4Q2D14FD: 435/1096 (0.3969)
+M4Q2D7FD:  312/1096 (0.2847)
+M4Q2D7HD:  316/1096 (0.2847)
+M8Q2D14FD: 438/1096 (0.3996)
+M8Q2D7FD:  334/1096 (0.3047)
+M8Q2D7HD:  310/1096 (0.2828)
+M8Q3D7FD:  349/1096 (0.3184)
+M8Q3D7HD:  302/1096 (0.2759)
+M8Q3D14HD: 359/1096 (0.3276)
+M4Q3D7FD:  312/1096 (0.2847)
+M4Q3D7HD:  296/1096 (0.2701)
+M4Q3D14HD: 377/1096 (0.3400)
+M8Q2D14HD: 334/1096 (0.3047)
 
 3.3 Word-error rates
 -------------------

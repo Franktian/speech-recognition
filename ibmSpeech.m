@@ -5,7 +5,7 @@ FD           = dir(flacFiles);
 LD           = dir(likFiles);
 
 % 4.1 Speech-to-text
-%speechToTextErrorRate('/u/cs401/speechdata/Testing/', 'unkn_', '4.1output.txt');
+speechToTextErrorRate('/u/cs401/speechdata/Testing/', 'unkn_', '4.1output.txt');
 
 % 4.2 Text-to-speech
 % Assumed .lik files in the same directory as this script
