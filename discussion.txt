@@ -75,6 +75,39 @@ M4Q3D7HD:  296/1096 (0.2701)
 M4Q3D14HD: 377/1096 (0.3400)
 M8Q2D14HD: 334/1096 (0.3047)
 
+Our default parameters are M = 8, Q = 3, dimension = 14 and 30 speakers
+for training, our variations to the parametersare all decreased from the
+default values.
+
+From a general perspective, the best classification rate we got is with
+the default set, which is also the most fullfilled training data and most
+complicated model. What we got is 449/1096 with accuracy of 40.97%.
+
+And as we decrease our parameters, we have seen a general trend that classification
+accuracy is also decreasing. This is within our expectation since the variation
+is simplifying our model that will negatively affect the classification.
+
+The model with M = 4, Q = 2, dimension = 7 and 15 speakers gives an accuracy
+of 28.83% with 312 correct ones out of 1096.
+
+When decreasing the parameter values, we set the value to half of the original
+except for Q as we set it 2 compare to 3.
+
+For parameter M we found it not significately affectting the classification,
+when only set M = 4 our classification rate is only down to 39.14% from
+40.97%.
+
+And the number of hidden states Q seems also not very affective to the classifcation,
+when decrease one hidden state the classification rate went down from 40.97% to
+39.96%.
+
+The data dimensions and number of speakers trained are much more significant than
+the above two. For data dimension, we saw an accuracy of 31.84% when set it to 7.
+And for number of traininng speakers we saw 32.76%. Both seems to be dramatic change
+compare to the original 40.97%.
+
+
+
 3.3 Word-error rates
 -------------------
 hypothesis sentence: now here is truly hey marvel

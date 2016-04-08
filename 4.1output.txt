@@ -1,90 +1,90 @@
 recognized transcript: now here is truly a Marvel
-SE = 0.000000, IE = 0.000000, DE = 0.000000
+SE = 0.000000, IE = 0.000000, DE = 0.000000, WER = 0.000000
 
 recognized transcript: captain features a muskrat and a tadpole
-SE = 0.125000, IE = 0.000000, DE = 0.125000
+SE = 0.125000, IE = 0.000000, DE = 0.125000, WER = 0.250000
 
 recognized transcript: just let me die in peace
-SE = 0.000000, IE = 0.000000, DE = 0.000000
+SE = 0.000000, IE = 0.000000, DE = 0.000000, WER = 0.000000
 
 recognized transcript: the sculptor looked at him bug eyed and amazed angry
-SE = 0.111111, IE = 0.111111, DE = 0.000000
+SE = 0.111111, IE = 0.111111, DE = 0.000000, WER = 0.222222
 
 recognized transcript: flash live in the trees as a cricket ball twig in several directions
-SE = 0.461538, IE = 0.000000, DE = 0.000000
+SE = 0.461538, IE = 0.000000, DE = 0.000000, WER = 0.461538
 
 recognized transcript: this is particularly true in site selection
-SE = 0.000000, IE = 0.000000, DE = 0.000000
+SE = 0.000000, IE = 0.000000, DE = 0.000000, WER = 0.000000
 
 recognized transcript: we would lose our export markets and deny ourselves imports we need
-SE = 0.000000, IE = 0.000000, DE = 0.076923
+SE = 0.000000, IE = 0.000000, DE = 0.076923, WER = 0.076923
 
 recognized transcript: continental have teaspoons of soy sauce that you add
-SE = 0.500000, IE = 0.000000, DE = 0.100000
+SE = 0.500000, IE = 0.000000, DE = 0.100000, WER = 0.600000
 
 recognized transcript: finally he asked do you object to petting
-SE = 0.000000, IE = 0.000000, DE = 0.000000
+SE = 0.000000, IE = 0.000000, DE = 0.000000, WER = 0.000000
 
 recognized transcript: try every other line first then fill in the interior
-SE = 0.200000, IE = 0.000000, DE = 0.000000
+SE = 0.200000, IE = 0.000000, DE = 0.000000, WER = 0.200000
 
 recognized transcript: change involves the displacement of femme
-SE = 0.166667, IE = 0.000000, DE = 0.000000
+SE = 0.166667, IE = 0.000000, DE = 0.000000, WER = 0.166667
 
 recognized transcript: to his puzzlement there suddenly was no Hayes
-SE = 0.125000, IE = 0.000000, DE = 0.000000
+SE = 0.125000, IE = 0.000000, DE = 0.000000, WER = 0.125000
 
 recognized transcript: don't ask me to carry read like that
-SE = 0.200000, IE = 0.000000, DE = 0.200000
+SE = 0.200000, IE = 0.000000, DE = 0.200000, WER = 0.400000
 
 recognized transcript: full moon shone brightly that night
-SE = 0.142857, IE = 0.000000, DE = 0.142857
+SE = 0.142857, IE = 0.000000, DE = 0.142857, WER = 0.285714
 
 recognized transcript: tug boats a capable of hauling huge loads
-SE = 0.285714, IE = 0.142857, DE = 0.000000
+SE = 0.285714, IE = 0.142857, DE = 0.000000, WER = 0.428571
 
 recognized transcript: did dad do academic betting
-SE = 0.200000, IE = 0.000000, DE = 0.000000
+SE = 0.200000, IE = 0.000000, DE = 0.000000, WER = 0.200000
 
 recognized transcript: she had your dark suit increase you wash water all year
-SE = 0.181818, IE = 0.000000, DE = 0.000000
+SE = 0.181818, IE = 0.000000, DE = 0.000000, WER = 0.181818
 
 recognized transcript: the thick el virus was nearly overwhelmed by Dutch elm disease
-SE = 0.181818, IE = 0.000000, DE = 0.000000
+SE = 0.181818, IE = 0.000000, DE = 0.000000, WER = 0.181818
 
 recognized transcript: cop number of teaspoons of soy sauce that you had
-SE = 0.300000, IE = 0.100000, DE = 0.100000
+SE = 0.300000, IE = 0.100000, DE = 0.100000, WER = 0.500000
 
 recognized transcript: waging sweaters are made of lambs will
-SE = 0.285714, IE = 0.000000, DE = 0.000000
+SE = 0.285714, IE = 0.000000, DE = 0.000000, WER = 0.285714
 
 recognized transcript: we think differently
-SE = 0.000000, IE = 0.000000, DE = 0.000000
+SE = 0.000000, IE = 0.000000, DE = 0.000000, WER = 0.000000
 
 recognized transcript: a toothpaste tube should be squeezed from the bottom
-SE = 0.000000, IE = 0.000000, DE = 0.000000
+SE = 0.000000, IE = 0.000000, DE = 0.000000, WER = 0.000000
 
 recognized transcript: ran away a black knight with a lawful wedded man
-SE = 0.090909, IE = 0.000000, DE = 0.090909
+SE = 0.090909, IE = 0.000000, DE = 0.090909, WER = 0.181818
 
 recognized transcript: don't ask me to carry an oily rag like that
-SE = 0.100000, IE = 0.000000, DE = 0.000000
+SE = 0.100000, IE = 0.000000, DE = 0.000000, WER = 0.100000
 
 recognized transcript: town asked me to carry an oily rag like that
-SE = 0.200000, IE = 0.000000, DE = 0.000000
+SE = 0.200000, IE = 0.000000, DE = 0.000000, WER = 0.200000
 
 recognized transcript: index words and electronic switches may be reserved in the following ways
-SE = 0.000000, IE = 0.000000, DE = 0.000000
+SE = 0.000000, IE = 0.000000, DE = 0.000000, WER = 0.000000
 
 recognized transcript: yeah avalanche triggered a minor earthquake
-SE = 0.166667, IE = 0.000000, DE = 0.000000
+SE = 0.166667, IE = 0.000000, DE = 0.000000, WER = 0.166667
 
 recognized transcript: don't ask me to carry an oily rag like that
-SE = 0.100000, IE = 0.000000, DE = 0.000000
+SE = 0.100000, IE = 0.000000, DE = 0.000000, WER = 0.100000
 
 recognized transcript: the thick and Forrest was nearly overwhelmed by Dutch elm disease
-SE = 0.181818, IE = 0.000000, DE = 0.000000
+SE = 0.181818, IE = 0.000000, DE = 0.000000, WER = 0.181818
 
 recognized transcript: when all else fails use force
-SE = 0.000000, IE = 0.000000, DE = 0.000000
+SE = 0.000000, IE = 0.000000, DE = 0.000000, WER = 0.000000
 
