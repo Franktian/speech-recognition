@@ -32,7 +32,8 @@ for i=1:length(hypoSens)
     hyposen = char(lower(regexprep(oriHyposen, '[^a-zA-Z ]', '')));
     hypoArray = strsplit(hyposen);
     
-    annoContent = textscan(fopen([annotation_dir '/' 'unkn_' int2str(i) '.txt']), '%d %d %s', 'delimiter','\n');
+    annoFile = fopen([annotation_dir '/' 'unkn_' int2str(i) '.txt']);
+    annoContent = textscan(annoFile, '%d %d %s', 'delimiter','\n');
     oriAnnosen = annoContent{3};
     annosen = char(lower(regexprep(oriAnnosen, '[^a-zA-Z ]', '')));
     annoArray = strsplit(annosen);
@@ -42,7 +43,11 @@ for i=1:length(hypoSens)
     
     [sub, ins, del]=singleSentLevenshtein(hypoArray, annoArray);
     
-    fprintf(output, 'hypothesis sentence: %s\nsentence SE = %d, sentence IE = %d, sentence DE = %d, \n\n', hyposen, sub/sent_wcount, ins/sent_wcount, del/sent_wcount);
+    sent_SE = sub/sent_wcount;
+    sent_IE = ins/sent_wcount;
+    sent_DE = del/sent_wcount;
+    sent_Erate = (sent_SE+sent_IE+sent_DE)/sent_wcount;
+    fprintf(output, 'hypothesis sentence: %s\nsentence SE = %d, sentence IE = %d, sentence DE = %d\nsentence proportion of total error = %d\n\n', hyposen, sent_SE, sent_IE, sent_DE, sent_Erate);
 
     SE = SE + sub;
     DE = DE + del;
@@ -50,10 +55,12 @@ for i=1:length(hypoSens)
 end
 
 
-SE = SE / word_count;
-DE = DE / word_count;
-IE = IE / word_count;
+SE = SE / total_wcount;
+DE = DE / total_wcount;
+IE = IE / total_wcount;
 LEV_DIST = SE + DE + IE;
+fprintf(output, 'total SE = %d, total DE = %d, total IE = %d\ntotal proportion of error = %d', SE, DE, IE, LEV_DIST);
+fclose(output);
 
 end
 

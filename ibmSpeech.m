@@ -10,7 +10,8 @@ for i=1:length(FD)
     text = char(speechToText(flac));
     textArray = strsplit(lower(text));
     
-    annoContent = textscan(fopen([testDir '/' 'unkn_' int2str(i) '.txt']), '%d %d %s', 'delimiter','\n');
+    annoFile = fopen([testDir '/' 'unkn_' int2str(i) '.txt']);
+    annoContent = textscan(annoFile, '%d %d %s', 'delimiter','\n');
     oriAnnosen = annoContent{3};
     annosen = char(lower(regexprep(oriAnnosen, '[^a-zA-Z ]', '')));
     annoArray = strsplit(annosen);
@@ -23,5 +24,6 @@ for i=1:length(FD)
     sentDE = de_count / word_count;
     
     fprintf(output, 'recognized transcript: %s\nSE = %d, IE = %d, DE = %d\n\n', text, annosen, sentSE, sentIE, sentDE);
-
+    fclose(annoFile);
 end
+fclose(output);
