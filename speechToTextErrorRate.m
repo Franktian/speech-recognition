@@ -8,8 +8,8 @@ output = fopen(outputname, 'w');
 for i=1:30
     % Get the absolute file path
     flac = [flacDir '/' flacPrefix int2str(i) '.flac'];
-    disp(flac);
     text = char(speechToText(flac));
+    disp(flac);
     textArray = strsplit(lower(text));
     
     annoFile = fopen([testDir '/' 'unkn_' int2str(i) '.txt']);
@@ -24,8 +24,8 @@ for i=1:30
     sentSE = se_count / word_count;
     sentIE = ie_count / word_count;
     sentDE = de_count / word_count;
-    
-    fprintf(output, 'recognized transcript: %s\nSE = %d, IE = %d, DE = %d\n\n', text, annosen, sentSE, sentIE, sentDE);
+
+    fprintf(output, 'recognized transcript: %s\nSE = %.6f, IE = %.6f, DE = %.6f\n\n', text, sentSE, sentIE, sentDE);
     fclose(annoFile);
 end
 fclose(output);

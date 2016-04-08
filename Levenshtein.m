@@ -9,6 +9,8 @@ function [SE IE DE LEV_DIST] =Levenshtein(hypothesis,annotation_dir)
 %	DE: proportion of deletion errors over all the hypotheses
 %	LEV_DIST: proportion of overall error in all hypotheses
 
+% Levenshtein('/u/cs401/speechdata/Testing/hypotheses.txt', '/u/cs401/speechdata/Testing/')
+
 SE = 0;
 IE = 0;
 DE = 0;
@@ -42,7 +44,7 @@ for i=1:length(hypoSens)
     sent_IE = ins/sent_wcount;
     sent_DE = del/sent_wcount;
     sent_Erate = (sent_SE+sent_IE+sent_DE)/sent_wcount;
-    fprintf(output, 'hypothesis sentence: %s\nsentence SE = %d, sentence IE = %d, sentence DE = %d\nsentence proportion of total error = %d\n\n', hyposen, sent_SE, sent_IE, sent_DE, sent_Erate);
+    fprintf(output, 'hypothesis sentence: %s\nsentence SE = %.6f, sentence IE = %.6f, sentence DE = %.6f\nsentence proportion of total error = %.6f\n\n', hyposen, sent_SE, sent_IE, sent_DE, sent_Erate);
 
     SE = SE + sub;
     DE = DE + del;
@@ -54,7 +56,7 @@ SE = SE / total_wcount;
 DE = DE / total_wcount;
 IE = IE / total_wcount;
 LEV_DIST = SE + DE + IE;
-fprintf(output, 'total SE = %d, total DE = %d, total IE = %d\ntotal proportion of error = %d', SE, DE, IE, LEV_DIST);
+fprintf(output, 'total SE = %.6f, total DE = %.6f, total IE = %.6f\ntotal proportion of error = %.6f', SE, DE, IE, LEV_DIST);
 fclose(output);
 
 end

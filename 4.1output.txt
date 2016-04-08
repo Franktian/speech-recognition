@@ -1,180 +1,90 @@
 recognized transcript: now here is truly a Marvel
-SE = 110, IE = 111, DE = 119
-
-recognized transcript:  here is truly a marvel
-SE = 0, IE = 0, DE = 0
+SE = 0.000000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: captain features a muskrat and a tadpole
-SE = 116, IE = 104, DE = 101
-
-recognized transcript:  cartoon features a muskrat and a tadpole
-SE = 1.250000e-01, IE = 0, DE = 1.250000e-01
+SE = 0.125000, IE = 0.000000, DE = 0.125000
 
 recognized transcript: just let me die in peace
-SE = 106, IE = 117, DE = 115
-
-recognized transcript: t let me die in peace
-SE = 0, IE = 0, DE = 0
+SE = 0.000000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: the sculptor looked at him bug eyed and amazed angry
-SE = 116, IE = 104, DE = 101
-
-recognized transcript:  sculptor looked at him bugeyed and amazed angry
-SE = 1.111111e-01, IE = 1.111111e-01, DE = 0
+SE = 0.111111, IE = 0.111111, DE = 0.000000
 
 recognized transcript: flash live in the trees as a cricket ball twig in several directions
-SE = 97, IE = 32, DE = 102
-
-recognized transcript: lash illumined the trees as a crooked bolt twigged in several directions
-SE = 4.615385e-01, IE = 0, DE = 0
+SE = 0.461538, IE = 0.000000, DE = 0.000000
 
 recognized transcript: this is particularly true in site selection
-SE = 116, IE = 104, DE = 105
-
-recognized transcript: s is particularly true in site selection
-SE = 0, IE = 0, DE = 0
+SE = 0.000000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: we would lose our export markets and deny ourselves imports we need
-SE = 119, IE = 101, DE = 32
-
-recognized transcript: would lose our export markets and deny ourselves the imports we need
-SE = 0, IE = 0, DE = 7.692308e-02
+SE = 0.000000, IE = 0.000000, DE = 0.076923
 
 recognized transcript: continental have teaspoons of soy sauce that you add
-SE = 99, IE = 111, DE = 117
-
-recognized transcript: nt the number of teaspoons of soysauce that you add
-SE = 5.000000e-01, IE = 0, DE = 1.000000e-01
+SE = 0.500000, IE = 0.000000, DE = 0.100000
 
 recognized transcript: finally he asked do you object to petting
-SE = 102, IE = 105, DE = 110
-
-recognized transcript: ally he asked do you object to petting
-SE = 0, IE = 0, DE = 0
+SE = 0.000000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: try every other line first then fill in the interior
-SE = 100, IE = 114, DE = 97
-
-recognized transcript: w every outer line first then fill in the interior
-SE = 2.000000e-01, IE = 0, DE = 0
+SE = 0.200000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: change involves the displacement of femme
-SE = 99, IE = 104, DE = 97
-
-recognized transcript: nge involves the displacement of form
-SE = 1.666667e-01, IE = 0, DE = 0
+SE = 0.166667, IE = 0.000000, DE = 0.000000
 
 recognized transcript: to his puzzlement there suddenly was no Hayes
-SE = 116, IE = 111, DE = 32
-
-recognized transcript: his puzzlement there suddenly was no haze
-SE = 1.250000e-01, IE = 0, DE = 0
+SE = 0.125000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: don't ask me to carry read like that
-SE = 100, IE = 111, DE = 110
-
-recognized transcript: t ask me to carry an oily rag like that
-SE = 2.000000e-01, IE = 0, DE = 2.000000e-01
+SE = 0.200000, IE = 0.000000, DE = 0.200000
 
 recognized transcript: full moon shone brightly that night
-SE = 116, IE = 104, DE = 101
-
-recognized transcript:  full moon shone brightly that night
-SE = 1.428571e-01, IE = 0, DE = 1.428571e-01
+SE = 0.142857, IE = 0.000000, DE = 0.142857
 
 recognized transcript: tug boats a capable of hauling huge loads
-SE = 116, IE = 117, DE = 103
-
-recognized transcript: boats are capable of hauling huge loads
-SE = 2.857143e-01, IE = 1.428571e-01, DE = 0
+SE = 0.285714, IE = 0.142857, DE = 0.000000
 
 recognized transcript: did dad do academic betting
-SE = 100, IE = 105, DE = 100
-
-recognized transcript:  dad do academic bidding
-SE = 2.000000e-01, IE = 0, DE = 0
+SE = 0.200000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: she had your dark suit increase you wash water all year
-SE = 115, IE = 104, DE = 101
-
-recognized transcript:  had your dark suit in greasy wash water all year
-SE = 1.818182e-01, IE = 0, DE = 0
+SE = 0.181818, IE = 0.000000, DE = 0.000000
 
 recognized transcript: the thick el virus was nearly overwhelmed by Dutch elm disease
-SE = 116, IE = 104, DE = 101
-
-recognized transcript:  thick elm forest was nearly overwhelmed by dutch elm disease
-SE = 1.818182e-01, IE = 0, DE = 0
+SE = 0.181818, IE = 0.000000, DE = 0.000000
 
 recognized transcript: cop number of teaspoons of soy sauce that you had
-SE = 99, IE = 111, DE = 117
-
-recognized transcript: nt the number of teaspoons of soysauce that you add
-SE = 3.000000e-01, IE = 1.000000e-01, DE = 1.000000e-01
+SE = 0.300000, IE = 0.100000, DE = 0.100000
 
 recognized transcript: waging sweaters are made of lambs will
-SE = 110, IE = 111, DE = 114
-
-recognized transcript: wegian sweaters are made of lambs wool
-SE = 2.857143e-01, IE = 0, DE = 0
+SE = 0.285714, IE = 0.000000, DE = 0.000000
 
 recognized transcript: we think differently
-SE = 119, IE = 101, DE = 32
-
-recognized transcript: think differently
-SE = 0, IE = 0, DE = 0
+SE = 0.000000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: a toothpaste tube should be squeezed from the bottom
-SE = 97, IE = 32, DE = 116
-
-recognized transcript: oothpaste tube should be squeezed from the bottom
-SE = 0, IE = 0, DE = 0
+SE = 0.000000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: ran away a black knight with a lawful wedded man
-SE = 114, IE = 97, DE = 110
-
-recognized transcript:  away on a black night with a lawful wedded man
-SE = 9.090909e-02, IE = 0, DE = 9.090909e-02
+SE = 0.090909, IE = 0.000000, DE = 0.090909
 
 recognized transcript: don't ask me to carry an oily rag like that
-SE = 100, IE = 111, DE = 110
-
-recognized transcript: t ask me to carry an oily rag like that
-SE = 1.000000e-01, IE = 0, DE = 0
+SE = 0.100000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: town asked me to carry an oily rag like that
-SE = 100, IE = 111, DE = 110
-
-recognized transcript: t ask me to carry an oily rag like that
-SE = 2.000000e-01, IE = 0, DE = 0
+SE = 0.200000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: index words and electronic switches may be reserved in the following ways
-SE = 105, IE = 110, DE = 100
-
-recognized transcript: ex words and electronic switches may be reserved in the following ways
-SE = 0, IE = 0, DE = 0
+SE = 0.000000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: yeah avalanche triggered a minor earthquake
-SE = 116, IE = 104, DE = 101
-
-recognized transcript:  avalanche triggered a minor earthquake
-SE = 1.666667e-01, IE = 0, DE = 0
+SE = 0.166667, IE = 0.000000, DE = 0.000000
 
 recognized transcript: don't ask me to carry an oily rag like that
-SE = 100, IE = 111, DE = 110
-
-recognized transcript: t ask me to carry an oily rag like that
-SE = 1.000000e-01, IE = 0, DE = 0
+SE = 0.100000, IE = 0.000000, DE = 0.000000
 
 recognized transcript: the thick and Forrest was nearly overwhelmed by Dutch elm disease
-SE = 116, IE = 104, DE = 101
-
-recognized transcript:  thick elm forest was nearly overwhelmed by dutch elm disease
-SE = 1.818182e-01, IE = 0, DE = 0
+SE = 0.181818, IE = 0.000000, DE = 0.000000
 
 recognized transcript: when all else fails use force
-SE = 119, IE = 104, DE = 101
-
-recognized transcript: n all else fails use force
-SE = 0, IE = 0, DE = 0
+SE = 0.000000, IE = 0.000000, DE = 0.000000
 
